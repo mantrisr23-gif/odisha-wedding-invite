@@ -77,12 +77,12 @@ export default function Events() {
             <div className="relative w-full md:w-[60%] h-[45vh] md:h-[65vh] z-10 p-1.5 bg-stone-100/5 border border-amber-400/15 shadow-[0_0_50px_rgba(0,0,0,0.6),0_0_80px_rgba(245,158,11,0.08)] md:order-2">
               <div className="relative w-full h-full overflow-hidden shadow-inner">
                <Image 
-  src={activeEvent.imageUrl || "/images/placeholder.jpg"} 
-  alt={activeEvent.title?.en || "Event Image"}
-  fill
-  sizes="(max-width: 768px) 100vw, 60vw" // Add this line
-  className="object-cover object-center"
-/>
+                  src={activeEvent.imageUrl || "/images/placeholder.jpg"} 
+                  alt={activeEvent.title?.en || "Event Image"}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover object-center"
+                />
               </div>
             </div>
 
@@ -110,17 +110,33 @@ export default function Events() {
                     <p>{activeEvent.time?.en || activeEvent.time}</p>
                   </div>
 
+                  {/* ---------- NEW WHERE & MAP SECTION ---------- */}
                   <div className="flex flex-col gap-1">
-                    <span className="text-amber-400/50 text-[8px] tracking-[0.3em]">Where</span>
-                    <p className="leading-relaxed font-normal text-white">
+                    <span className="text-amber-400/50 text-[8px] tracking-[0.3em] mb-1">Where</span>
+                    <p className="leading-relaxed font-normal text-white mb-4">
                       {activeEvent.venue?.en || activeEvent.venue}
                     </p>
+
+                    {/* The Framed Luxury Map - Using Swosti Premium URL */}
+                    <div className="w-full h-32 md:h-40 border border-amber-400/20 relative overflow-hidden group rounded-sm mb-2">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.2754821378126!2d85.82056717458119!3d20.30407251227536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909b8a098adcd%3A0x99b961f708f4afad!2sSwosti%20Premium%20-%20Luxury%205-Star%20Hotel%20in%20Bhubaneswar!5e1!3m2!1sen!2sin!4v1780650063159!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen={false} 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="filter grayscale-[80%] invert-[90%] sepia-[40%] contrast-[85%] opacity-60 group-hover:opacity-100 group-hover:filter-none transition-all duration-700 ease-in-out"
+                      />
+                    </div>
                   </div>
+                  {/* --------------------------------------------- */}
 
                 </div>
                 
                 {activeEvent.description && (
-                  <p className={cn("mt-8 text-stone-400 text-xs leading-relaxed opacity-90 border-t border-white/5 pt-6", theme.fontBody)}>
+                  <p className={cn("mt-6 text-stone-400 text-[10px] md:text-xs leading-relaxed opacity-90 border-t border-white/5 pt-6", theme.fontBody)}>
                     {activeEvent.description?.en || activeEvent.description}
                   </p>
                 )}
@@ -132,11 +148,11 @@ export default function Events() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "mt-10 inline-block w-full text-center py-4 border border-amber-400/30 text-amber-400 hover:bg-amber-400 hover:text-stone-950 transition-all duration-500 uppercase tracking-[0.3em] text-[9px] font-semibold",
+                      "mt-8 inline-block w-full text-center py-3 md:py-4 border border-amber-400/30 text-amber-400 hover:bg-amber-400 hover:text-stone-950 transition-all duration-500 uppercase tracking-[0.3em] text-[8px] md:text-[9px] font-semibold",
                       theme.fontBody
                     )}
                   >
-                    View Map & Directions
+                    View Directions ↗
                   </a>
                 )}
               </div>
